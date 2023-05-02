@@ -9,7 +9,7 @@ const MeetOurChef = ({ chef }) => {
     return (
         <section className='pb-20 mx-auto w-[95%]'>
             <h3 className='text-4xl text-black font-bold text-center uppercase'>Meet Our Chef's</h3>
-            <div className='mt-6 grid grid-cols-3 gap-6'>
+            <div className='mt-10 grid grid-cols-3 gap-6'>
                 {chef.slice(0, seeMore? 9:6).map(cd => {
                     return (
                         <div className='mx-auto' key={cd.id}>

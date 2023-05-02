@@ -5,6 +5,7 @@ import Banner from '../../components/Banner/Banner';
 import About from '../../components/About/About';
 import MeetOurChef from '../../components/MeetOurChef/MeetOurChef';
 import { useLoaderData } from 'react-router-dom';
+import FindUs from '../../components/FindUs/FindUs';
 
 const Home = () => {
     const chefInfo = useLoaderData();
@@ -13,6 +14,7 @@ const Home = () => {
             <Banner></Banner>
             <About></About>
             <MeetOurChef chef={chefInfo}></MeetOurChef>
+            <FindUs></FindUs>
         </>
     );
 };
