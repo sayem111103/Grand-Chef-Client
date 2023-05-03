@@ -12,6 +12,9 @@ const LoginPage = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
+     // popup provider 
+     const github = new GithubAuthProvider();
+     const google = new GoogleAuthProvider();
 
     // login with email and password function
     const handleLogin = (e) => {
@@ -32,7 +35,7 @@ const LoginPage = () => {
             .then((userCredential) => {
                 const user = userCredential.user;
                 console.log(user);
-                navigate(from);
+                navigate(from,{replace: true});
             })
             .catch((error) => {
                 const errorMessage = error.message;
@@ -48,18 +51,13 @@ const LoginPage = () => {
             })
     }
 
-    // popup provider 
-    const github = new GithubAuthProvider();
-    const google = new GoogleAuthProvider;
-
     // popup function
     const popupLogin = (provider) => {
         setError('')
         signInWithPopup(auth, provider)
             .then((result) => {
                 const user = result.user;
-                console.log(user);
-                navigate(from)
+                navigate(from, {replace: true})
             }).catch((error) => {
                 const errorMessage = error.message;
                 if (errorMessage === 'Firebase: Error (auth/popup-closed-by-user).') {

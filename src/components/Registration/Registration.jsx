@@ -1,13 +1,16 @@
 /* eslint-disable */
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from '../../AuthProvider/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 
 const Registration = () => {
     const [show, setShow] = useState(false)
     const [error, setError] = useState('')
-    const { handleEmailPasswordFRegistration } = useContext(authContext)
+    const { handleEmailPasswordFRegistration } = useContext(authContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
 
     // registration function
     const handleRegistration = (e) => {
@@ -30,6 +33,7 @@ const Registration = () => {
                 const user = userCredential.user;
                 upDateProfile(user, name, photoUrl)
                 form.reset()
+                navigate(from,{replace: true});
             })
             .catch((error) => {
                 const errorMessage = error.message;

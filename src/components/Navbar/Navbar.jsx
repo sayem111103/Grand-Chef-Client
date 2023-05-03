@@ -5,7 +5,7 @@ import { authContext } from '../../AuthProvider/AuthProvider';
 import ActiveLink from '../ActiveLink/ActiveLink';
 import { signOut } from 'firebase/auth';
 
-const Navbar = ({ value }) => {
+const Navbar = ({value}) => {
     const { user, auth } = useContext(authContext);
     const [show, setShow] = useState(false)
     
