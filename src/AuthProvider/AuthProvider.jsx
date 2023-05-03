@@ -6,6 +6,7 @@ import app from '../firebase/firebase.config'
 export const authContext = createContext();
 
 const AuthProvider = ({ children }) => {
+    const [loader, setLoader] = useState(true);
     const [user, setUser] = useState(null)
     const auth = getAuth(app);
 
@@ -22,6 +23,7 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribs = onAuthStateChanged(auth, user => {
             setUser(user)
+            setLoader(false)
             console.log(user);
         })
         return () => {
@@ -32,6 +34,7 @@ const AuthProvider = ({ children }) => {
     const value = {
         user,
         auth,
+        loader,
         handleEmailPasswordFRegistration,
         handleEmailPasswordFLogin
     }

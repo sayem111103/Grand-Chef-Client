@@ -8,6 +8,7 @@ import { signOut } from 'firebase/auth';
 const Navbar = ({ value }) => {
     const { user, auth } = useContext(authContext);
     const [show, setShow] = useState(false)
+    
     // Signout 
     const logout = () => {
         signOut(auth).then(() => {
@@ -39,7 +40,7 @@ const Navbar = ({ value }) => {
                                     <Link to="/dashboard" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</Link>
                                 </li>
                                 <li>
-                                    <Link onClick={logout} to="/login" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</Link>
+                                    <Link onClick={logout} to="/" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</Link>
                                 </li>
                             </ul>
                         </div>

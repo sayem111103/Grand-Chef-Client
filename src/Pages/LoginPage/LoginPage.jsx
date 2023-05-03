@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { authContext } from '../../AuthProvider/AuthProvider';
 import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
@@ -9,8 +9,11 @@ const LoginPage = () => {
     const [show, setShow] = useState(false)
     const [error, setError] = useState('')
     const { auth, handleEmailPasswordFLogin } = useContext(authContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
 
-    // login function
+    // login with email and password function
     const handleLogin = (e) => {
         setError('')
         e.preventDefault()
@@ -29,6 +32,7 @@ const LoginPage = () => {
             .then((userCredential) => {
                 const user = userCredential.user;
                 console.log(user);
+                navigate(from);
             })
             .catch((error) => {
                 const errorMessage = error.message;
@@ -55,6 +59,7 @@ const LoginPage = () => {
             .then((result) => {
                 const user = result.user;
                 console.log(user);
+                navigate(from)
             }).catch((error) => {
                 const errorMessage = error.message;
                 if (errorMessage === 'Firebase: Error (auth/popup-closed-by-user).') {
