@@ -4,8 +4,7 @@ import { FaRegThumbsUp } from 'react-icons/fa'
 import { Link } from 'react-router-dom';
 
 const MeetOurChef = ({ chef }) => {
-    const [seeMore, setSeeMore] = useState(false)
-    console.log(chef);
+    const [seeMore, setSeeMore] = useState(false);
     return (
         <section className='pb-20 mx-auto w-[95%]'>
             <h3 className='text-4xl text-black font-bold text-center uppercase'>Meet Our Chef's</h3>

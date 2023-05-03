@@ -1,9 +1,13 @@
 /* eslint-disable */
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { authContext } from '../../AuthProvider/AuthProvider';
+import ActiveLink from '../ActiveLink/ActiveLink';
 
 const Navbar = () => {
+    const {user} = useContext(authContext);
     const [show, setShow] = useState(false)
+    console.log(user);
     return (
         <nav className=''>
             <div className='mx-auto w-[95%] py-3 flex items-center justify-between'>
@@ -11,9 +15,9 @@ const Navbar = () => {
                     <Link className='text-black font-bold uppercase text-4xl' to='/'>Grand <span className='font-normal'>Chef</span></Link>
                 </div>
                 <ul className='flex'>
-                    <Link className='text-lg font-medium mx-3' to='/'>Home</Link>
-                    <Link className='text-lg font-medium mr-3' to='/blog'>Blog</Link>
-                    <div className="flex items-center md:order-2 relative">
+                    <ActiveLink to='/'>Home</ActiveLink>
+                    <ActiveLink to='/blog'>Blog</ActiveLink>
+                    {user?<div className="flex items-center md:order-2 relative">
                         <button onClick={()=> setShow(!show)} type="button" className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600">
                             <span className="sr-only">Open user menu</span>
                             <img className="w-8 h-8 rounded-full" src="https://images.unsplash.com/photo-1682687982185-531d09ec56fc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="user photo" />
@@ -33,7 +37,7 @@ const Navbar = () => {
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div>: <Link className='text-lg font-medium hover:text-blue-600' to='/login'>Login</Link>}
                 </ul>
             </div>
         </nav>
