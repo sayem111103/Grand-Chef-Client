@@ -1,16 +1,29 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { authContext } from '../../AuthProvider/AuthProvider';
 
 const Registration = () => {
+    const {handleEmailPasswordLogin} = useContext(authContext)
+
+    const handleRegistration = (e) =>{
+        e.preventDefault()
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const photoUrl = form.url.value;
+        console.log(name, email, password, photoUrl);
+    }
     return (
         <>
             <section>
                 <div className='mx-auto w-[95%] py-10'>
-                <form className='w-5/12 mx-auto border p-5 rounded'>
+                <form onSubmit={handleRegistration} className='w-5/12 mx-auto border p-5 rounded'>
+                <h3 className='text-2xl text-black font-medium text-center uppercase mb-6'>Please Registration Here!!!</h3>
                     <div className='w-1/2 mx-auto'>
-                        <label htmlFor="first_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                        <input type="text" id="first_name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John" required />
+                        <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                        <input type="text" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John" required />
                     </div>
 
                     <div className='w-1/2 mx-auto mt-3'>

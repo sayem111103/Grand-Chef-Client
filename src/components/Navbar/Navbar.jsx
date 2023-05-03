@@ -7,7 +7,7 @@ import ActiveLink from '../ActiveLink/ActiveLink';
 const Navbar = ({value}) => {
     const {user} = useContext(authContext);
     const [show, setShow] = useState(false)
-    console.log(user);
+    // console.log(user);
     return (
         <nav className={value? 'bg-amber-300': ''}>
             <div className='mx-auto w-[95%] py-3 flex items-center justify-between'>
