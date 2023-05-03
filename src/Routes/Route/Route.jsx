@@ -9,7 +9,7 @@ import Registration from "../../components/Registration/Registration";
 
 const router = createBrowserRouter([
     {
-        path:'/',
+        path: '/',
         element: <Main></Main>,
         errorElement: <Error></Error>,
         children: [
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
                 path: '/',
                 element: <Home></Home>,
                 errorElement: <Error></Error>,
-                loader: ()=> fetch('https://grand-chef-server-sayem111103.vercel.app/chef')
+                loader: () => fetch('https://grand-chef-server-sayem111103.vercel.app/chef')
             },
             {
                 path: 'blog',
@@ -28,14 +28,14 @@ const router = createBrowserRouter([
     },
 
     {
-        path:'/login',
+        path: '/login',
         element: <Login></Login>,
-        errorElement:<Error></Error>,
-        children:[
+        errorElement: <Error></Error>,
+        children: [
             {
                 path: '/login',
-                element:<LoginPage></LoginPage>,
-                errorElement:<Error></Error>
+                element: <LoginPage></LoginPage>,
+                errorElement: <Error></Error>
             },
             {
                 path: '/login/registration',
