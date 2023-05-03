@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 import { authContext } from '../../AuthProvider/AuthProvider';
 import ActiveLink from '../ActiveLink/ActiveLink';
 
-const Navbar = () => {
+const Navbar = ({value}) => {
     const {user} = useContext(authContext);
     const [show, setShow] = useState(false)
     console.log(user);
     return (
-        <nav className=''>
+        <nav className={value? 'bg-amber-300': ''}>
             <div className='mx-auto w-[95%] py-3 flex items-center justify-between'>
                 <div>
                     <Link className='text-black font-bold uppercase text-4xl' to='/'>Grand <span className='font-normal'>Chef</span></Link>
@@ -37,7 +37,7 @@ const Navbar = () => {
                                 </li>
                             </ul>
                         </div>
-                    </div>: <Link className='text-lg font-medium hover:text-blue-600' to='/login'>Login</Link>}
+                    </div>: <ActiveLink to='/login'>Login</ActiveLink>}
                 </ul>
             </div>
         </nav>
