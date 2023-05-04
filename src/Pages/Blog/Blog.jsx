@@ -3,12 +3,13 @@ import { Button } from 'flowbite-react';
 import React, { useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Blog = () => {
     const foods = useLoaderData();
     const [favourite, setFavourite] = useState([]);
     const [seeMore, setSeeMore] = useState(false);
-    
+
     const handlefavourite = (id) => {
         let arr = []
         const food = foods.find(fd => fd.foodId === id);
@@ -29,16 +30,42 @@ const Blog = () => {
         <>
             <section style={{ backgroundImage: `url(https://images.unsplash.com/photo-1606843046080-45bf7a23c39f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80)`, backgroundPosition: 'top', backgroundAttachment: 'fixed', backgroundColor: 'rgba(0, 0, 0, 0.2)', backgroundBlendMode: 'multiply', backgroundSize: 'cover', padding: '200px 0' }}>
                 <div className='w-1/2 mx-auto'>
-                    <h2 className='text-8xl text-center text-white font-bold'>Blogs</h2>
+                    <h2 className='text-8xl text-center text-white font-bold uppercase'>Blogs</h2>
                 </div>
             </section>
             <section className='px-5 py-20'>
+                <h2 className='text-4xl mb-8 text-center text-black font-bold uppercase'>Questions and Answers</h2>
+                <div>
+                    <h4 className='text-xl font-bold text-black'>1. Tell us the differences between uncontrolled and controlled components ?</h4>
+                    <p className='ml-2 text-gray-500'><span className='text-md text-black font-semibold mt-3 text-justify'>Ans : </span>
+                        In React, controlled components refer to components that have their state and behavior controlled by the parent component. These components rely on props passed down from the parent component to update their state and behavior. Uncontrolled components refer to components that manage their own state internally.
+                    </p>
+                    <h4 className='text-xl font-bold text-black'>2. How to validate React props using PropType ?</h4>
+                    <p className='ml-2 text-gray-500'><span className='text-md text-black font-semibold mt-3 text-justify'>Ans : </span>
+                        PropTypes is React’s internal mechanism for adding type checking to component props. React components use a special property called propTypes to set up type checking :
+                        {`                         
+                         function ReactComponent(props) {
+                          // ...implement render logic here
+                        }
+
+                        ReactComponent.propTypes = {
+                          // ...prop type definitions here
+                        }`}
+                    </p>
+                    <h4 className='text-xl font-bold text-black'>3. Tell us the difference between nodejs and express js ?</h4>
+                    <p className='ml-2 text-gray-500'><span className='text-md font-semibold mt-3 text-black text-justify'>Ans : </span>NodeJS is the package, which provides the JavaScript run-time environment, whereas Express is a framework that sits on top of NodeJS and helps us to handle requests and responses</p>
+                    <h4 className='text-xl font-bold text-black'>4. What is a custom hook, and why will you create a custom hook ?</h4>
+                    <p className='ml-2 text-gray-500'><span className='text-md font-semibold mt-3 text-black text-justify'>Ans : </span>Custom React JS hooks offer reusability as when a custom hook is created, it can be reused easily, which makes the code cleaner and reduces the time to write the code. It also enhances the rendering speed of the code as a custom hook does not need to be rendered again and again while rendering the whole code.</p>
+                </div>
+            </section>
+            <section className='px-5 py-20'>
+                <h2 className='text-4xl mb-8 text-center text-black font-bold uppercase'>Food Blogs</h2>
                 <div className='grid grid-cols-3 gap-6'>
-                    {foods.slice(0,seeMore? 9:6).map(fd => {
+                    {foods.slice(0, seeMore ? 9 : 6).map(fd => {
                         return (
                             <>
                                 <div className='mx-auto' key={fd.foodId}>
-                                    <div className="w-[400px] h-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                    <div className="w-[350px] h-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                                         <Link to={`/recipedetails/${fd.foodId}`} >
                                             <img title={fd.foodName} className="rounded-t-lg h-[250px] w-full" src={fd.foodPicture} alt={fd.chefPicture} />
                                         </Link>
