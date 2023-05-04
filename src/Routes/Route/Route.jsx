@@ -25,7 +25,8 @@ const router = createBrowserRouter([
             {
                 path: 'blog',
                 element: <PrivateRoute><Blog></Blog></PrivateRoute>,
-                errorElement: <Error></Error>
+                errorElement: <Error></Error>,
+                loader: ()=>fetch(`https://grand-chef-server-sayem111103.vercel.app/food`)
             },
             {
                 path: 'recipe/:id',

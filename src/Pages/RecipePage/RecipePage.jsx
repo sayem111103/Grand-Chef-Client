@@ -9,7 +9,7 @@ const RecipePage = () => {
     const chef = useLoaderData();
     const [food, setFood] = useState([]);
     const [favourite, setFavourite] = useState([])
-    // const []
+
     useEffect(() => {
         fetch('https://grand-chef-server-sayem111103.vercel.app/food')
             .then(res => res.json())
@@ -32,7 +32,7 @@ const RecipePage = () => {
         const foods = favourite.find(fd => fd.foodId === id);
         return foods;
     }
-    console.log(favourite);
+
     return (
         <>
             <section key={chef.id} style={{ backgroundImage: `url(${chef.chefPicture})`, backgroundPosition: 'top', backgroundAttachment: 'fixed', backgroundColor: 'rgba(0, 0, 0, 0.4)', backgroundBlendMode: 'multiply', backgroundSize: 'cover', padding: '300px 0' }}>
@@ -43,22 +43,26 @@ const RecipePage = () => {
                     <p className='text-center text-xl text-white font-thin mt-1'>Recipe : {chef.numRecipes} items</p>
                 </div>
             </section>
+
             <section className='flex py-20'>
                 {food.slice(0, 3).map(fd => {
                     return (
                         <div className='mx-auto' key={fd.foodId}>
-                            <div className="max-w-sm h-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                                <Link to="">
+                            <div className="max-w-sm h-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">                                
+                                <Link to={`/recipedetails/${fd.foodId}`} >
                                     <img title={fd.foodName} className="rounded-t-lg h-[250px] w-full" src={fd.foodPicture} alt={fd.chefPicture} />
                                 </Link>
+
                                 <div className="p-4 box-border">
-                                    <Link to="">
+                                    <Link to={`/recipedetails/${fd.foodId}`} >
                                         <h5 className="mb-2 text-2xl uppercase font-bold tracking-tight text-gray-900 dark:text-white">{fd.foodName}</h5>
                                     </Link>
+
                                     <p className='text-xl font-medium '>Ingredients :</p>
                                     <ol style={{ listStyleType: 'decimal', marginLeft: '20px' }}>
                                         {fd.foodIngredient.slice(0, 5).map((fi, index) => <li key={index} className='text-md font-normal'>{fi}</li>)}
                                     </ol>
+
                                     <div className='flex mt-5 mx-auto items-center justify-center w-9/12'>
                                         {handledisable(fd.foodId) ? <Button disabled className="w-full inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                             Add to favourite
@@ -79,8 +83,8 @@ const RecipePage = () => {
                                         </Link>
                                     </div>
                                 </div>
-                            </div>
 
+                            </div>
                         </div>
                     )
                 })}

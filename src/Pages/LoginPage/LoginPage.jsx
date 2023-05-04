@@ -23,10 +23,11 @@ const LoginPage = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+
         if (!/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(password)) {
             return setError('Password should be minimum eight characters, at least one letter, one number and one special character')
         }
+
         else if (!email && !password && !name && !photoUrl) {
             return setError('please provide email, password, name and photo url')
         }
@@ -34,7 +35,6 @@ const LoginPage = () => {
         handleEmailPasswordFLogin(email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                console.log(user);
                 navigate(from,{replace: true});
             })
             .catch((error) => {
