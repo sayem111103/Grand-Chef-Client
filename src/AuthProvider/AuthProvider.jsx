@@ -12,10 +12,12 @@ const AuthProvider = ({ children }) => {
 
     // login with password and email function 
     const handleEmailPasswordFRegistration = (email, password) => {
+        setLoader(true)
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
     const handleEmailPasswordFLogin = (email, password) => {
+        setLoader(true)
         return signInWithEmailAndPassword(auth, email, password);
     }
 
@@ -24,7 +26,6 @@ const AuthProvider = ({ children }) => {
         const unsubscribs = onAuthStateChanged(auth, user => {
             setUser(user)
             setLoader(false)
-            console.log(user);
         })
         return () => {
             return unsubscribs();
