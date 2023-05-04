@@ -6,7 +6,7 @@ const Header = () => {
     return (
         <header className='bg-blue-900'>
             <div className='mx-auto w-[95%] py-3'>
-                <div className="flex justify-between">
+                <div className="flex justify-between gap-5 items-center">
                 <p className="flex items-center font-medium text-white"><FaLocationArrow className='mr-2'></FaLocationArrow> Kazipur, Sirajganj, Rajshahi</p>
                 <p className='text-white'>
                     <a className='flex items-center' href="tel: +88017...."><FaPhone className='mr-2'></FaPhone> +88017....</a>

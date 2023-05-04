@@ -6,10 +6,10 @@ const Recipe = () => {
     const foodDetails = useLoaderData();
     return (
         <>
-            <section style={{ backgroundImage: `url(${foodDetails.foodPicture})`, backgroundPosition: 'top', backgroundAttachment: 'fixed', backgroundColor: 'rgba(0, 0, 0, 0.4)', backgroundBlendMode: 'multiply', backgroundSize: 'cover', padding: '200px 0' }}>
+            <section className='lg:py-[200px] py-20' style={{ backgroundImage: `url(${foodDetails.foodPicture})`, backgroundPosition: 'top', backgroundAttachment: 'fixed', backgroundColor: 'rgba(0, 0, 0, 0.4)', backgroundBlendMode: 'multiply', backgroundSize: 'cover' }}>
                 <div className='w-1/2 mx-auto'>
-                    <h3 className='text-4xl text-white font-bold text-center uppercase'>{foodDetails.foodName}</h3>
-                    <p className='text-center text-xl text-white font-medium mt-4 uppercase'>Catagory : {foodDetails.foodCategory}</p>
+                    <h3 className='text-2xl lg:text-4xl text-white font-bold text-center uppercase'>{foodDetails.foodName}</h3>
+                    <p className='text-center text-sm lg:text-xl text-white font-medium mt-4 uppercase'>Catagory : {foodDetails.foodCategory}</p>
                 </div>
             </section>
             <section className='py-20'>

@@ -8,19 +8,19 @@ const MeetOurChef = ({ chef }) => {
     const [seeMore, setSeeMore] = useState(false);
     return (
         <section className='pb-20 mx-auto w-[95%]'>
-            <h3 className='text-4xl text-black font-bold text-center uppercase'>Meet Our Chef's</h3>
-            <div className='mt-10 grid grid-cols-3 gap-6'>
+            <h3 className='lg:text-4xl text-2xl text-black font-bold text-center uppercase'>Meet Our Chef's</h3>
+            <div className='mt-10 lg:grid grid-cols-3 lg:gap-6'>
                 {chef.slice(0, seeMore ? 9 : 6).map(cd => {
                     return (
-                        <div className='mx-auto' key={cd.id}>
-                            <div className="max-w-sm h-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                                <Link to="/recipe">
+                        <div className='mx-auto w-[90%] lg:w-[unset]  mt-6 lg:mt-0' key={cd.id}>
+                            <div className="lg:max-w-sm h-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                <Link to={`/recipe/${cd.id}`}>
                                     <LazyLoad>
                                         <img title={cd.chefName} className="rounded-t-lg h-[350px] w-full" src={cd.chefPicture} alt={cd.chefPicture} />
                                     </LazyLoad>
                                 </Link>
                                 <div className="p-5">
-                                    <Link to="/recipe">
+                                    <Link to={`/recipe/${cd.id}`}>
                                         <h5 className="mb-2 text-2xl uppercase font-bold tracking-tight text-gray-900 dark:text-white">{cd.chefName}</h5>
                                     </Link>
                                     <p className='text-justify font-thin'>{cd.bio.slice(0, 100)}...</p>
@@ -42,7 +42,7 @@ const MeetOurChef = ({ chef }) => {
                     )
                 })}
             </div>
-            <button onClick={() => setSeeMore(!seeMore)} type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg px-8 py-2.5 mx-auto block mt-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">{seeMore ? 'See Less' : 'See More'}</button>
+            <button onClick={() => setSeeMore(!seeMore)} type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-md lg:text-lg lg:px-8 px-4 py-1 lg:py-2 mx-auto block mt-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">{seeMore ? 'See Less' : 'See More'}</button>
         </section>
     );
 };

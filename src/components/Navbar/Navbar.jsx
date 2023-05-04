@@ -20,9 +20,9 @@ const Navbar = ({ value }) => {
         <nav className={value ? 'bg-amber-300' : ''}>
             <div className='mx-auto w-[95%] py-3 flex items-center justify-between'>
                 <div>
-                    <Link className='text-black font-bold uppercase text-4xl' to='/'>Grand <span className='font-normal'>Chef</span></Link>
+                    <Link className='text-black font-bold uppercase lg:text-4xl' to='/'>Grand <span className='font-normal'>Chef</span></Link>
                 </div>
-                <ul className='flex'>
+                <ul className='flex items-center'>
                     <ActiveLink to='/'>Home</ActiveLink>
                     <ActiveLink to='/blog'>Blog</ActiveLink>
                     {user ? <div className="flex items-center md:order-2 relative">

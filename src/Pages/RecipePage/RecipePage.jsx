@@ -36,20 +36,20 @@ const RecipePage = () => {
 
     return (
         <>
-            <section key={chef.id} style={{ backgroundImage: `url(${chef.chefPicture})`, backgroundPosition: 'top', backgroundAttachment: 'fixed', backgroundColor: 'rgba(0, 0, 0, 0.4)', backgroundBlendMode: 'multiply', backgroundSize: 'cover', padding: '300px 0' }}>
-                <div className='w-1/2 mx-auto'>
-                    <h3 className='text-4xl text-white font-bold text-center uppercase'>{chef.chefName}</h3>
-                    <p className='text-center text-xl text-white font-thin mt-4'>{chef.bio}</p>
+            <section className='py-20 lg:py-[300px]' key={chef.id} style={{ backgroundImage: `url(${chef.chefPicture})`, backgroundPosition: 'top', backgroundAttachment: 'fixed', backgroundColor: 'rgba(0, 0, 0, 0.4)', backgroundBlendMode: 'multiply', backgroundSize: 'cover' }}>
+                <div className='w-[90%] lg:w-1/2 mx-auto'>
+                    <h3 className='text-2xl lg:text-4xl text-white font-bold text-center uppercase'>{chef.chefName}</h3>
+                    <p className='text-center text-xl text-white font-thin lg:mt-4'>{chef.bio}</p>
                     <p className='text-center text-xl text-white font-thin mt-6'>Experience : {chef.yearsOfExperience} years</p>
                     <p className='text-center text-xl text-white font-thin mt-1'>Recipe : {chef.numRecipes} items</p>
                 </div>
             </section>
 
-            <section className='flex py-20'>
+            <section className='flex flex-wrap gap-5 py-20'>
                 {food.slice(0, 3).map(fd => {
                     return (
-                        <div className='mx-auto' key={fd.foodId}>
-                            <div className="max-w-sm h-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                        <div className='mx-auto w-[90%] lg:w-[unset]' key={fd.foodId}>
+                            <div className="lg:max-w-sm h-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                                 <Link to={`/recipedetails/${fd.foodId}`} >
                                     <LazyLoad>
                                         <img title={fd.foodName} className="rounded-t-lg h-[250px] w-full" src={fd.foodPicture} alt={fd.chefPicture} />
