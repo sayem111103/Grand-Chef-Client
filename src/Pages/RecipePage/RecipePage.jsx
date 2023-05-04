@@ -4,6 +4,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { FaHeart } from 'react-icons/fa';
 import { Button } from 'flowbite-react';
 import Swal from 'sweetalert2';
+import LazyLoad from 'react-lazy-load';
 
 const RecipePage = () => {
     const chef = useLoaderData();
@@ -48,9 +49,11 @@ const RecipePage = () => {
                 {food.slice(0, 3).map(fd => {
                     return (
                         <div className='mx-auto' key={fd.foodId}>
-                            <div className="max-w-sm h-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">                                
+                            <div className="max-w-sm h-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                                 <Link to={`/recipedetails/${fd.foodId}`} >
-                                    <img title={fd.foodName} className="rounded-t-lg h-[250px] w-full" src={fd.foodPicture} alt={fd.chefPicture} />
+                                    <LazyLoad>
+                                        <img title={fd.foodName} className="rounded-t-lg h-[250px] w-full" src={fd.foodPicture} alt={fd.chefPicture} />
+                                    </LazyLoad>
                                 </Link>
 
                                 <div className="p-4 box-border">

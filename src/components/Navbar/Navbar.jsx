@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 import { authContext } from '../../AuthProvider/AuthProvider';
 import ActiveLink from '../ActiveLink/ActiveLink';
 import { signOut } from 'firebase/auth';
+import LazyLoad from 'react-lazy-load';
 
-const Navbar = ({value}) => {
+const Navbar = ({ value }) => {
     const { user, auth } = useContext(authContext);
     const [show, setShow] = useState(false)
-    
+
     // Signout 
     const logout = () => {
         signOut(auth).then(() => {
@@ -27,7 +28,9 @@ const Navbar = ({value}) => {
                     {user ? <div className="flex items-center md:order-2 relative">
                         <button onClick={() => setShow(!show)} type="button" className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600">
                             <span className="sr-only">Open user menu</span>
-                            <img title={user.displayName} className="w-8 h-8 rounded-full" src={user.photoURL} alt="user photo" />
+                            <LazyLoad>
+                                <img title={user.displayName} className="w-8 h-8 rounded-full" src={user.photoURL} alt="user photo" />
+                            </LazyLoad>
                         </button>
                         {/* <!-- Dropdown menu --> */}
                         <div className={`z-50 absolute top-6 right-0 ${show ? 'block' : 'hidden'} my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600`}>

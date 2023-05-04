@@ -2,6 +2,7 @@
 import { Button } from 'flowbite-react';
 import React, { useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
+import LazyLoad from 'react-lazy-load';
 import { Link, useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
@@ -67,7 +68,9 @@ const Blog = () => {
                                 <div className='mx-auto' key={fd.foodId}>
                                     <div className="w-[350px] h-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                                         <Link to={`/recipedetails/${fd.foodId}`} >
-                                            <img title={fd.foodName} className="rounded-t-lg h-[250px] w-full" src={fd.foodPicture} alt={fd.chefPicture} />
+                                            <LazyLoad>
+                                                <img title={fd.foodName} className="rounded-t-lg h-[250px] w-full" src={fd.foodPicture} alt={fd.chefPicture} />
+                                            </LazyLoad>
                                         </Link>
 
                                         <div className="p-4 box-border">
