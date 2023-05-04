@@ -34,7 +34,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className='bg-blue-900 py-3'>
-            <p className='flex items-center text-xs lg:text-lg text-white justify-center'>Copyright <FaRegCopyright className='text-xs mx-1 mt-1'></FaRegCopyright> 2022.All rights reserved by <span className='ml-1 uppercase text-amber-300'>Grand Chef.</span></p>
+            <p className='flex items-center text-xs lg:text-lg text-white justify-center'>Copyright <FaRegCopyright className='text-xs mx-1'></FaRegCopyright> 2022.All rights reserved by <span className='ml-1 uppercase text-amber-300'>Grand Chef.</span></p>
             </div>
         </footer>
     );
